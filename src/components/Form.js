@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import Button from './Button'
+import './Form.css'
 
 function Form() {
     const[valueName, setName] = useState({
@@ -19,11 +21,16 @@ function Form() {
     }
     function checkPassword(e){
         e.preventDefault()
-        if(valueName.password !== valueName.confirmPassword){
-            alert('passwords do not match')
-        }
+       if(valueName.password === valueName.confirmPassword){
+        alert('successfully signed in')
+       }else {
+        alert('passwords do not match')
+        return
+       }
+       if(valueName.areHuman){
+        console.log('Thank you for joining news letter');
+       }
     }
- 
   return (
     <>
     <form>   
@@ -53,7 +60,7 @@ function Form() {
          id='checkbtn'
          />
          <label htmlFor='checkbtn'>I want to join the newsletter</label>
-         <button onClick={checkPassword}>Sign up</button>
+         <Button onClick={checkPassword}>Sign up</Button>
     </form>
     <p>{valueName.email} {valueName.password} {valueName.confirmPassword}</p>
     </>
